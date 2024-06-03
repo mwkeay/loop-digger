@@ -1,0 +1,10 @@
+html, body, div#__next, main {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overscroll-behavior: none;
+}
+
+p, h1 {
+    margin: 0;
+}
