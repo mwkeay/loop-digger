@@ -1,20 +1,6 @@
-import { Metadata } from "next";
 import Image from "next/image"
-import "../../styles/test.css";
+import "@/styles/test.css";
 
-export const metadata: Metadata = {
-    title: "Loop Digger - Test",
-    icons: "/favicon.ico"
-};
-
-/**
- * Next.js pages cannot be a named export alongside a default export.
- * @example
- * const Page = () => {...}; // Success
- * export const Page = () => {...}; // Error
- */
-
-/** */
 const Page = () => {
     return (
         <div className="test">

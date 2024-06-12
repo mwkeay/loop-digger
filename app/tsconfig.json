@@ -22,7 +22,10 @@
       }
     ],
     "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@/*": ["./src/app/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
