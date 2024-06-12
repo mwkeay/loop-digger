@@ -24,7 +24,7 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@/*": ["./src/app/*"]
+      "@/*": ["./src/*"],
     }
   },
   "include": [

@@ -1,15 +1,10 @@
-import { AlbumsMap } from "./albums";
-import { ArtistsMap } from "./artists";
-import { TracksMap } from "./tracks";
+import AlbumsMap from "./albums-map";
+import ArtistsMap from "./artists-map";
+import TracksMap from "./tracks-map";
+import UsersMap from "./users-map";
 
-/**
- * ===================
- *     API MAPPING
- * ===================
- */
-
-// Combine endpoint maps from each category
-export type EndpointMap = AlbumsMap & ArtistsMap & TracksMap;
+// Combined endpoint maps from each category
+export type EndpointMap = AlbumsMap & ArtistsMap & TracksMap & UsersMap;
 
 // Type for an API endpoint route (e.g. "/tracks", "/me/albums")
 export type Endpoint = keyof EndpointMap;
@@ -33,14 +28,3 @@ export type MethodMap = {
 export type ResponsesMap = {
 	[K in Endpoint]: EndpointMap[K] extends { responseData: infer R } ? R : never
 };
-
-/**
- * ==============================
- *     EXPORT ALL API OBJECTS
- * ==============================
- */
-
-export * from "./albums";
-export * from "./artists";
-export * from "./common";
-export * from "./tracks";

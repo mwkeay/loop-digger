@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { ReactNode } from "react";
-import "@/styles/global.css";
+import "@/app/styles/global.css";
 
 export const metadata: Metadata = {
     title: "Loop Digger",

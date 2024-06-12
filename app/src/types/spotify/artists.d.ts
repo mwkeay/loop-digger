@@ -1,25 +1,3 @@
-import { Image } from "./common";
-
-export type ArtistsMap = {
-
-    "/artists/": {
-        method: "GET"
-        params: {
-            id: ArtistId
-        }
-        responseData: Artist
-    }
-
-    "/artists": {
-        method: "GET"
-        params: {
-            ids: ArtistIds
-        }
-        responseData: { artists: Artist[] }
-    }
-
-};
-
 export type Artist = {
     /** Known external URLs for this artist. */
     external_urls: {

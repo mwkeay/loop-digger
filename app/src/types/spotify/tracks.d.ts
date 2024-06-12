@@ -1,29 +1,3 @@
-import { Album } from "./albums";
-import { Artist, SimplifiedArtist } from "./artists";
-import { Market } from "./common";
-
-export type TracksMap = {
-
-    "/tracks/": {
-        method: "GET"
-        params: {
-            id: TrackId
-            market?: Market
-        }
-        responseData: Album
-    }
-
-    "/tracks": {
-        method: "GET"
-        params: {
-            ids: TrackIds
-            market?: Market
-        }
-        responseData: { tracks: Track[] }
-    }
-
-};
-
 export type SimplifiedTrack = Omit<Track, "album" | "artists" | "external_ids" | "popularity"> & {
     /** The artists who performed the track. Each artist object includes a link in `href` to more detailed information about the artist. */
     artists: SimplifiedArtist[]

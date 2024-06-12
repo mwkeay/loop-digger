@@ -1,29 +1,3 @@
-import { SimplifiedArtist } from "./artists";
-import { Image, Market } from "./common";
-import { SimplifiedTrack } from "./tracks";
-
-export type AlbumsMap = {
-
-    "/albums/": {
-        method: "GET"
-        params: {
-            id: AlbumId
-            market: Market
-        }
-        responseData: Album
-    }
-
-    "/albums": {
-        method: "GET"
-        params: {
-            ids: AlbumIds
-            market: Market
-        }
-        responseData: { albums: Album[] }
-    }
-
-};
-
 export type CopyrightObject = {
     /** The copyright text for this content. */
     text: string
