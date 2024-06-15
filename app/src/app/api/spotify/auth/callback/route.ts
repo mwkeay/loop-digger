@@ -1,10 +1,21 @@
-import config from "@/config/spotify";
+import config from "@/app/lib/config";
+import spotifyConfig from "@/app/lib/spotify/config";
 import { SpotifyOAuthResponse } from "@/types/spotify/auth";
 import { Me } from "@/types/spotify/users";
 import { db, VercelPoolClient } from "@vercel/postgres";
 import { cookies } from "next/headers";
 
-export const authCodeFlow = async (authCode: string) => {
+export const GET = async (request: Request) => {
+
+    const { searchParams } = new URL(request.url);
+    const authCode = searchParams.get("code");
+
+    cookies().set("test", "WAHDUFDIF");
+
+    if (!authCode) {
+        console.error("No authorization code found in callback search params.");
+        return Response.redirect(config.rootUrl);
+    }
 
     let tokens: SpotifyOAuthResponse;
     let user: Me;
@@ -23,9 +34,9 @@ export const authCodeFlow = async (authCode: string) => {
             body: new URLSearchParams({
                 grant_type: "authorization_code",
                 code: authCode,
-                redirect_uri: config.redirectUri,
-                client_id: config.clientId,
-                client_secret: config.clientSecret,
+                redirect_uri: spotifyConfig.redirectUri,
+                client_id: spotifyConfig.clientId,
+                client_secret: spotifyConfig.clientSecret,
             }),
         });
 
@@ -37,7 +48,7 @@ export const authCodeFlow = async (authCode: string) => {
     }
 
     catch (error) {
-        console.error("Access token fetch failed", error);
+        console.error("Access token fetch failed.", error);
         return;
     }
 
@@ -57,11 +68,11 @@ export const authCodeFlow = async (authCode: string) => {
 
         if (!user.id) throw new Error("No id attribute in /me response JSON.");
 
-        cookies().set("spotify_user_id", user.id);
+        cookies().set({ name: "loopdigger_spotify_user_id", value: user.id, path: "/", httpOnly: false });
     }
 
     catch (error) {
-        console.error("Spoify account fetch failed", error);
+        console.error("Spoify account fetch failed.", error);
         return;
     }
 
@@ -74,7 +85,7 @@ export const authCodeFlow = async (authCode: string) => {
     }
 
     catch (error) {
-        console.error("Database connection failed", error);
+        console.error("Database connection failed.", error);
         return;
     }
 
@@ -83,17 +94,24 @@ export const authCodeFlow = async (authCode: string) => {
     // ============================
 
     try {
+        // Begin transaction
         client.query("BEGIN");
 
+        // Create user record
         await client.sql`
         INSERT INTO user_account (spotify_user_id) VALUES (${user.id})
         ON CONFLICT DO NOTHING;
         `;
 
+        // Get user ID
         const userId = (await client.sql`
             SELECT id FROM user_account WHERE spotify_user_id = ${user.id};
         `).rows[0].id;
 
+        // Create user ID cookie
+        cookies().set({ name: "loopdigger_user_id", value: userId, path: "/", httpOnly: false });
+
+        // Create/update database tokens
         await client.sql`
             INSERT INTO user_authorization (user_id, access_token, refresh_token, expires) VALUES (
                 ${userId},
@@ -107,18 +125,20 @@ export const authCodeFlow = async (authCode: string) => {
                 expires = EXCLUDED.expires;
         `;
 
+        // Commit transaction
         await client.query("COMMIT");
     }
 
     catch (error) {
+        // Cancel transaction
         await client.query("ROLLBACK");
-        console.error("Database insert failed", error);
+        console.error("Database insert failed.", error);
         return;
     }
 
     finally {
         client.release();
     }
-};
 
-export default authCodeFlow;
+    return Response.redirect(config.rootUrl);
+};
