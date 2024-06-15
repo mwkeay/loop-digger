@@ -18,6 +18,14 @@ export type TracksMap = {
         responseData: { tracks: Track[] }
     }
 
+    "/audio-analysis/": {
+        method: "GET"
+        parsm: {
+            id: TrackId
+        }
+        responseData: AudioAnalysis
+    }
+
 };
 
 export default TracksMap;

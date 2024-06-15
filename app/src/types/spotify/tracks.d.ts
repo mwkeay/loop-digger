@@ -79,3 +79,67 @@ export type TrackId = string;
 export type TrackIds = string;
 
 export type TrackAlbum = Omit<Album, "tracks" | "copyrights" | "external_ids" | "genres" | "label" | "popularity">;
+
+// ======================
+//     Audio Analysis
+// ======================
+
+export type AudioAnalysis = {
+    meta: object
+    track: object
+    /** The time intervals of the bars throughout the track. A bar (or measure) is a segment of time defined as a given number of beats. */
+    bars: Bar[]
+    /** The time intervals of beats throughout the track. A beat is the basic time unit of a piece of music; for example, each tick of a metronome. Beats are typically multiples of tatums. */
+    beats: Beat[]
+    /** Sections are defined by large variations in rhythm or timbre, e.g. chorus, verse, bridge, guitar solo, etc. Each section contains its own descriptions of tempo, key, mode, time_signature, and loudness. */
+    sections: Section[]
+    /** Each segment contains a roughly conisistent sound throughout its duration. */
+    segments: Segment[]
+    /** A tatum represents the lowest regular pulse train that a listener intuitively infers from the timing of perceived musical events (segments). */
+    tatums: Tatum[]
+}
+
+export type Bar = {
+    start: number
+    duration: number
+    confidence: number
+}
+
+export type Beat = {
+    start: number
+    duration: number
+    confidence: number
+}
+
+export type Section = {
+    start: number
+    duration: number
+    confidence: number
+    loudness: number
+    tempo: number
+    temp_confidence: number
+    key: number
+    key_confidence: number
+    mode: number
+    mode_confidence: number
+    time_signature: number
+    time_signature_confidence: number
+}
+
+export type Segment = {
+    start: number
+    duration: number
+    confidence: number
+    loudness_start: number
+    loudness_max: number
+    loudness_max_time: number
+    loudness_end: number
+    pitches: number[]
+    timber: number[]
+}
+
+export type Tatum = {
+    start: number
+    duration: number
+    confidence: number
+}

@@ -23,7 +23,7 @@ const getTrack = async (trackId: string): Promise<Track | undefined> => {
         });
 
         if (!response.ok) {
-            throw new Error("Spotify GET /track/{id} failed with status: " + response.status);
+            throw new Error("Spotify GET /track/ failed with status: " + response.status);
         }
 
         const track: Track = await response.json();
@@ -34,7 +34,7 @@ const getTrack = async (trackId: string): Promise<Track | undefined> => {
     }
 
     catch (error) {
-        console.error("Spotify GET /track/{id} failed.", error);
+        console.error("Spotify GET /track/ failed.", error);
         return;
     }
 };

@@ -12,9 +12,9 @@ const Page = () => {
             <div className="home-title">
                 <h1>Loop Digger</h1>
                 <p>
-                    A web application developed for the undergraduate engineering dissertation "
+                    A web application developed for the undergraduate engineering dissertation &quot;
                     <i>Developing a Sample-Based Recommendation Method for Human-Driven Music Discovery on Spotify</i>
-                    ".
+                    &quot;.
                 </p>
             </div>
 

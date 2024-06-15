@@ -1,10 +1,10 @@
 "use server";
 
-import getTrack from "../actions/getTrack";
+import getAudioAnalysis from "../actions/getAudioAnalysis";
 
 const ClientCredentialsTest = async () => {
 
-    const track = await getTrack("083HuPvgqYBLUiv82bVxwE");
+    const track = await getAudioAnalysis("083HuPvgqYBLUiv82bVxwE");
 
     return (
         <pre>
