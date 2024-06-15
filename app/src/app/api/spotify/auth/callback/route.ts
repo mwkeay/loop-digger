@@ -45,7 +45,7 @@ export const GET = async (request: Request) => {
         if (!tokens.access_token) throw new Error("No access_token attribute in Spotify auth code token response JSON.");
         if (!tokens.refresh_token) throw new Error("No refresh_token attribute in Spotify auth code token response JSON.");
         if (!tokens.expires_in) throw new Error("No expires_in attribute in Spotify auth code token response JSON.");
-        if (!token.expires_in) throw new Error("No expires_in attribute in Spotify auth code token response JSON.");
+        if (!tokens.expires_in) throw new Error("No expires_in attribute in Spotify auth code token response JSON.");
     }
 
     catch (error) {
