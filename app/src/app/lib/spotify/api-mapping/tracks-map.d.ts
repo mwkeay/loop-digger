@@ -6,7 +6,7 @@ export type TracksMap = {
             id: TrackId
             market?: Market
         }
-        responseData: Album
+        responseData: Track
     }
 
     "/tracks": {

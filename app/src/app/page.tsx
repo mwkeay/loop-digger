@@ -2,11 +2,9 @@
 
 import "@/app/styles/home.css";
 import LoginLink from "@/app/ui/LoginLink";
-import ServerTest from "./ui/ServerTest";
+import ClientCredentialsTest from "./ui/ClientCredentialsTest";
 
 const Page = () => {
-
-    const signedIn = true;
 
     return (
         <main className="home">
@@ -20,20 +18,13 @@ const Page = () => {
                 </p>
             </div>
 
-            {
-                signedIn
+            <div>
+                <p className="home-body">
+                    Click &rarr; <LoginLink>HERE</LoginLink> &larr; to log into Spotify
+                </p>
+            </div>
 
-                    ? <>
-                        <p className="home-body">You are signed in!</p>
-                        <ServerTest />
-                    </>
-
-                    : <div>
-                        <p className="home-body">
-                            Click &rarr; <LoginLink>HERE</LoginLink> &larr; to log into Spotify
-                        </p>
-                    </div>
-            }
+            <ClientCredentialsTest />
 
         </main>
     );

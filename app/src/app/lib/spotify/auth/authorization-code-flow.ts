@@ -2,7 +2,7 @@
 
 import { db, VercelPoolClient } from "@vercel/postgres";
 
-export const getRawAccessToken = async (userId: string): Promise<string> => {
+export const getRawDbAccessToken = async (userId: string): Promise<string> => {
 
     let client: VercelPoolClient;
 

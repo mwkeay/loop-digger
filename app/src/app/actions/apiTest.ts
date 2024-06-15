@@ -2,7 +2,7 @@
 
 import { Me } from "@/types/spotify/users";
 import { cookies } from "next/headers";
-import { getRawAccessToken } from "../lib/spotify/access-tokens";
+import { getRawDbAccessToken } from "../lib/spotify/auth/authorization-code-flow";
 
 const apiTest = async (): Promise<Me | undefined> => {
 
@@ -29,7 +29,7 @@ const apiTest = async (): Promise<Me | undefined> => {
     // ========================
 
     try {
-        accessToken = await getRawAccessToken(userId);
+        accessToken = await getRawDbAccessToken(userId);
     }
 
     catch (error) {
