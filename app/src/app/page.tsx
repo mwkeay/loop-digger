@@ -2,7 +2,7 @@
 
 import "@/app/styles/home.css";
 import LoginLink from "@/app/ui/LoginLink";
-import ClientCredentialsTest from "./ui/ClientCredentialsTest";
+import SearchTest from "./ui/SearchTest";
 
 const Page = () => {
 
@@ -24,7 +24,7 @@ const Page = () => {
                 </p>
             </div>
 
-            <ClientCredentialsTest />
+            <SearchTest />
 
         </main>
     );
