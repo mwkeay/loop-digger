@@ -3,6 +3,7 @@
 import { Me } from "@/types/spotify/users";
 import { cookies } from "next/headers";
 import { getRawDbAccessToken } from "../lib/spotify/auth/authorization-code-flow";
+import logger from "../lib/logger";
 
 const apiTest = async (): Promise<Me | undefined> => {
 
@@ -20,7 +21,7 @@ const apiTest = async (): Promise<Me | undefined> => {
     }
 
     catch (error) {
-        console.error("apiTest failed to retrieve user ID cookie.", error);
+        logger.error("apiTest failed to retrieve user ID cookie.", error);
         return;
     }
 
@@ -33,7 +34,7 @@ const apiTest = async (): Promise<Me | undefined> => {
     }
 
     catch (error) {
-        console.error("apiTest failed to retrieve access token.", error);
+        logger.error("apiTest failed to retrieve access token.", error);
         return;
     }
 
@@ -59,7 +60,7 @@ const apiTest = async (): Promise<Me | undefined> => {
     }
 
     catch (error) {
-        console.error("Spoify GET /me failed.", error);
+        logger.error("Spoify GET /me failed.", error);
         return;
     }
 

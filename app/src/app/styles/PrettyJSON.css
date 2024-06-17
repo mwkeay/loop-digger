@@ -1,0 +1,30 @@
+pre.pretty-json {
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+
+	overflow-x: scroll;
+	overflow-y: scroll;
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
+
+	background-color: black;
+	color: lightgray;
+	font-size: 0.75rem;
+}
+
+pre.pretty-json::-webkit-scrollbar {
+	display: none;
+}
+
+span.pretty { color: white; }
+
+span.pretty.brackets { color: #ffffff80; }
+
+span.pretty.key { color: #1ed760; }
+span.pretty.key.speechmarks { color: #1ed76080; }
+
+span.pretty.value { color: #6189df; }
+span.pretty.value.string { color: #fff; }
+span.pretty.value.string.speechmarks { color: #ffffff80; }

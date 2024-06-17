@@ -2,7 +2,6 @@
 
 import "@/app/styles/home.css";
 import LoginLink from "@/app/ui/LoginLink";
-import SearchTest from "./ui/SearchTest";
 
 const Page = () => {
 
@@ -23,8 +22,6 @@ const Page = () => {
                     Click &rarr; <LoginLink>HERE</LoginLink> &larr; to log into Spotify
                 </p>
             </div>
-
-            <SearchTest />
 
         </main>
     );

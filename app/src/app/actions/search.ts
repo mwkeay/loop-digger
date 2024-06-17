@@ -1,5 +1,6 @@
 "use server";
 
+import logger from "../lib/logger";
 import { SearchQuery, SearchTypeSet } from "../lib/spotify/api-mapping/search-map";
 import { getCCToken } from "../lib/spotify/auth/client-credentials-flow";
 
@@ -8,7 +9,7 @@ const search = async (q: SearchQuery, types: SearchTypeSet) => {
     const ccToken = await getCCToken()
 
     if (!ccToken) {
-        console.error("Server action getCCToken failed in search.");
+        logger.error("Server action getCCToken failed in search.");
         return;
     }
 
@@ -33,13 +34,13 @@ const search = async (q: SearchQuery, types: SearchTypeSet) => {
 
         const search: Search = await response.json();
 
-        console.log("Spotify GET /search 200");
+        logger.debug("Spotify GET /search 200");
 
         return search;
     }
 
     catch (error) {
-        console.error("Spotify GET /search failed.", error);
+        logger.error("Spotify GET /search failed.", error);
         return;
     }
 };

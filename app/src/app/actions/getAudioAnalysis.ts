@@ -2,13 +2,14 @@
 
 import { AudioAnalysis } from "@/types/spotify/tracks";
 import { getCCToken } from "../lib/spotify/auth/client-credentials-flow";
+import logger from "../lib/logger";
 
 const getAudioAnalysis = async (trackId: string): Promise<AudioAnalysis | undefined> => {
 
     const ccToken = await getCCToken();
 
     if (!ccToken) {
-        console.error("Server action getCCToken failed in getAudioAnalysis.");
+        logger.error("Server action getCCToken failed in getAudioAnalysis.");
         return;
     }
 
@@ -28,13 +29,13 @@ const getAudioAnalysis = async (trackId: string): Promise<AudioAnalysis | undefi
 
         const audioAnalysis: AudioAnalysis = await response.json();
 
-        console.log("Spotify GET /audio-analysis/ 200");
+        logger.debug("Spotify GET /audio-analysis/ 200");
 
         return audioAnalysis;
     }
 
     catch (error) {
-        console.error("Spotify GET /audio-analysis/ failed.", error);
+        logger.error("Spotify GET /audio-analysis/ failed.", error);
         return;
     }
 };

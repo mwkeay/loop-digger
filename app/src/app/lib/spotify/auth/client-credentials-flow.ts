@@ -1,6 +1,7 @@
 "use server";
 
-import spotifyConfig from "../config";
+import * as logger from "@/app/lib/logger";
+import spotifyConfig from "@/app/lib/spotify/config";
 
 interface CCTokenResponse {
     access_token: string
@@ -15,7 +16,7 @@ interface CCToken {
 
 let token: CCToken;
 
-const getNewCCToken = async (): Promise<CCToken | undefined> => {
+export const getNewCCToken = async (): Promise<CCToken | undefined> => {
 
     try {
         const startTime = Date.now();
@@ -36,18 +37,25 @@ const getNewCCToken = async (): Promise<CCToken | undefined> => {
 
         if (!data.access_token) throw new Error("No access_token attribute in Spotify client credentials token response JSON.");
         if (!data.expires_in) throw new Error("No expires_in attribute in Spotify client credentials token response JSON.");
-        if (data.expires_in != 3600) console.error("Unexpected expires_in length in Spotify client credentials token response JSON.");
+        if (data.expires_in != 3600) logger.error("Unexpected expires_in length in Spotify client credentials token response JSON.");
 
-        token = {
+        const newToken = {
             accessToken: data.access_token,
             expires: new Date(startTime + (data.expires_in * 1000)),
         };
 
-        return token;
+        token = newToken;
+
+        logger.info("Client credentials token updated.", {
+            accessToken: newToken.accessToken,
+            expires: newToken.expires.toString(),
+        });
+        
+        return newToken;
     }
 
     catch (error) {
-        console.error("Access token fetch failed.", error);
+        logger.error("Access token fetch failed.", error);
         return;
     }
 };

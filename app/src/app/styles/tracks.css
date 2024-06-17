@@ -1,0 +1,7 @@
+.track-page {
+    width: 100%;
+
+    && .pretty-json {
+        height: fit-content;
+    }
+}

@@ -1,14 +1,15 @@
 "use server";
 
 import { Track } from "@/types/spotify/tracks";
-import { getCCToken } from "../lib/spotify/auth/client-credentials-flow";
+import { getCCToken } from "@/app/lib/spotify/auth/client-credentials-flow";
+import logger from "@/app/lib/logger";
 
 const getTrack = async (trackId: string): Promise<Track | undefined> => {
 
     const ccToken = await getCCToken();
 
     if (!ccToken) {
-        console.error("Server action getCCToken failed in getTrack.");
+        logger.error("Server action getCCToken failed in getTrack.");
         return;
     }
 
@@ -28,13 +29,13 @@ const getTrack = async (trackId: string): Promise<Track | undefined> => {
 
         const track: Track = await response.json();
 
-        console.log("Spotify GET /track/ 200");
+        logger.debug("Spotify GET /track/ 200");
 
         return track;
     }
 
     catch (error) {
-        console.error("Spotify GET /track/ failed.", error);
+        logger.error("Spotify GET /track/ failed.", error);
         return;
     }
 };
