@@ -1,7 +1,7 @@
-import config from "@/app/lib/config";
-import spotifyConfig from "@/app/lib/spotify/config";
+import config from "@/lib/config";
+import spotifyConfig from "@/lib/spotify/config";
 import { SpotifyOAuthResponse } from "@/types/spotify/auth";
-import { Me } from "@/types/spotify/users";
+import { Me } from "@/types/spotify/api-types/users";
 import { db, VercelPoolClient } from "@vercel/postgres";
 import { cookies } from "next/headers";
 

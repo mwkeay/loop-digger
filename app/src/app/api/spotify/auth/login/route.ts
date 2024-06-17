@@ -1,4 +1,4 @@
-import spotifyConfig from "@/app/lib/spotify/config";
+import spotifyConfig from "@/lib/spotify/config";
 
 export const GET = async (request: Request) => {
 

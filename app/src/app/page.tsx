@@ -1,7 +1,7 @@
 "use server";
 
-import "@/app/styles/home.css";
-import LoginLink from "@/app/ui/LoginLink";
+import "@/styles/home.css";
+import LoginLink from "@/components/LoginLink";
 
 const Page = () => {
 

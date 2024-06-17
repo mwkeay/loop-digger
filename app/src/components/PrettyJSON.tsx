@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, createContext, useContext, ReactNode, Fragment } from "react";
-import "@/app/styles/PrettyJSON.css";
+import "@/styles/PrettyJSON.css";
 
 const OpenObjectsContext = createContext<{
 	openObjects: string[][]

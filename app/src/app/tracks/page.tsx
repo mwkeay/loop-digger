@@ -1,4 +1,4 @@
-import "@/app/styles/tracks.css";
+import "@/styles/tracks.css";
 import { FC } from "react";
 
 const Page: FC = () => {

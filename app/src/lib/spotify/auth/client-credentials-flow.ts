@@ -1,7 +1,7 @@
 "use server";
 
-import * as logger from "@/app/lib/logger";
-import spotifyConfig from "@/app/lib/spotify/config";
+import * as logger from "@/lib/logger";
+import spotifyConfig from "@/lib/spotify/config";
 
 interface CCTokenResponse {
     access_token: string

@@ -1,8 +1,8 @@
 "use server";
 
-import { AudioAnalysis } from "@/types/spotify/tracks";
-import { getCCToken } from "../lib/spotify/auth/client-credentials-flow";
-import logger from "../lib/logger";
+import { AudioAnalysis } from "@/types/spotify/api-types/tracks";
+import { getCCToken } from "@/lib/spotify/auth/client-credentials-flow";
+import logger from "@/lib/logger";
 
 const getAudioAnalysis = async (trackId: string): Promise<AudioAnalysis | undefined> => {
 

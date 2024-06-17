@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FC, ReactNode } from "react";
-import spotifyConfig from "@/app/lib/spotify/config";
+import spotifyConfig from "@/lib/spotify/config";
 
 const LoginLink: FC<{ children: ReactNode }> = ({ children }) => {
 

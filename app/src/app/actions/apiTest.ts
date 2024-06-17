@@ -1,9 +1,9 @@
 "use server";
 
-import { Me } from "@/types/spotify/users";
+import { Me } from "@/types/spotify/api-types/users";
 import { cookies } from "next/headers";
-import { getRawDbAccessToken } from "../lib/spotify/auth/authorization-code-flow";
-import logger from "../lib/logger";
+import { getRawDbAccessToken } from "@/lib/spotify/auth/authorization-code-flow";
+import logger from "@/lib/logger";
 
 const apiTest = async (): Promise<Me | undefined> => {
 

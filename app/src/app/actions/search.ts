@@ -1,8 +1,8 @@
 "use server";
 
-import logger from "../lib/logger";
-import { SearchQuery, SearchTypeSet } from "../lib/spotify/api-mapping/search-map";
-import { getCCToken } from "../lib/spotify/auth/client-credentials-flow";
+import logger from "@/lib/logger";
+import { SearchQuery, SearchTypeSet } from "@/lib/spotify/api-mapping/search-map";
+import { getCCToken } from "@/lib/spotify/auth/client-credentials-flow";
 
 const search = async (q: SearchQuery, types: SearchTypeSet) => {
 

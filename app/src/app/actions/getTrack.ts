@@ -1,8 +1,8 @@
 "use server";
 
-import { Track } from "@/types/spotify/tracks";
-import { getCCToken } from "@/app/lib/spotify/auth/client-credentials-flow";
-import logger from "@/app/lib/logger";
+import { Track } from "@/types/spotify/api-types/tracks";
+import { getCCToken } from "@/lib/spotify/auth/client-credentials-flow";
+import logger from "@/lib/logger";
 
 const getTrack = async (trackId: string): Promise<Track | undefined> => {
 
