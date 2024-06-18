@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { PlayerContextObject, nullPlayerContext } from "./context";
 import logger from "@/lib/logger";
+import { SpotifyPlayer } from "@/types/spotify/SpotifyPlayer";
 
 const addPlayerEventListeners = (player: SpotifyPlayer, setContext: Dispatch<SetStateAction<PlayerContextObject>>) => {
 

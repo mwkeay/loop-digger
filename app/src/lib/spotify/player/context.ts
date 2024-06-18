@@ -1,4 +1,5 @@
 import logger from "@/lib/logger";
+import { SpotifyPlayer } from "@/types/spotify/SpotifyPlayer";
 import { createContext, useContext } from "react";
 
 export interface PlayerContextObject {

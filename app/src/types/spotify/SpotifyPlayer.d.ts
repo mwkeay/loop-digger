@@ -25,7 +25,7 @@ declare global {
  * }
  * @see https://developer.spotify.com/documentation/web-playback-sdk/reference#spotifyplayer
  */
-declare class SpotifyPlayer {
+export declare class SpotifyPlayer {
 
     /**
      * @param {string} name The name of the Spotify Connect player. It will be visible in other Spotify apps 
