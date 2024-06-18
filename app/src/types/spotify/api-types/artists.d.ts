@@ -1,4 +1,4 @@
-export type Artist = {
+type Artist = {
     /** Known external URLs for this artist. */
     external_urls: {
         /** The {@link https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids Spotify URL} for the object. */
@@ -35,12 +35,12 @@ export type Artist = {
  * The {@link https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids Spotify ID} of the artist.
  * @example "0TnOYISbd1XYRBk9myaseg"
  */
-export type ArtistId = string;
+type ArtistId = string;
 
 /**
  * A comma-separated list of the {@link https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids Spotify IDs} for the artists. Maximum: 100 IDs.
  * @example "2CIMQHirSU0MQqyYHq0eOx,57dN52uHvrHOxijzpIgu3E,1vCWHaC5f2uS3yhpwWbIA6"
  */
-export type ArtistIds = string;
+type ArtistIds = string;
 
-export type SimplifiedArtist = Omit<Artist, "followers" | "genres" | "images" | "popularity">
+type SimplifiedArtist = Omit<Artist, "followers" | "genres" | "images" | "popularity">

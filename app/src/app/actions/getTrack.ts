@@ -1,6 +1,5 @@
 "use server";
 
-import { Track } from "@/types/spotify/api-types/tracks";
 import { getCCToken } from "@/lib/spotify/auth/client-credentials-flow";
 import logger from "@/lib/logger";
 

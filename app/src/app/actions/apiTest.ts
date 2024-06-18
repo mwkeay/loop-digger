@@ -1,36 +1,18 @@
 "use server";
 
-import { Me } from "@/types/spotify/api-types/users";
-import { cookies } from "next/headers";
 import { getRawDbAccessToken } from "@/lib/spotify/auth/authorization-code-flow";
 import logger from "@/lib/logger";
 
 const apiTest = async (): Promise<Me | undefined> => {
 
-    let userId: string;
     let accessToken: string;
-
-    // =====================
-    //     Check Cookies
-    // =====================
-
-    try {
-        const userIdCookie = cookies().get("loopdigger_user_id");
-        if (userIdCookie === undefined) throw new Error ("No loopdigger_user_id cookie found.");
-        else userId = userIdCookie.value;
-    }
-
-    catch (error) {
-        logger.error("apiTest failed to retrieve user ID cookie.", error);
-        return;
-    }
 
     // ========================
     //     Get Access Token
     // ========================
 
     try {
-        accessToken = await getRawDbAccessToken(userId);
+        accessToken = await getRawDbAccessToken();
     }
 
     catch (error) {

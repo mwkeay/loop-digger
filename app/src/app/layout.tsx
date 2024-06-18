@@ -1,7 +1,8 @@
-import { Metadata } from "next";
-import { ReactNode } from "react";
 import "@/styles/global.css";
+import PlayerProvider from "@/components/PlayerProvider";
+import { Metadata } from "next/types";
 import Script from "next/script";
+import { ReactNode } from "react";
 
 export const metadata: Metadata = {
     title: "Loop Digger",
@@ -11,8 +12,15 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: ReactNode }) => {
     return (
         <html lang="en">
-            <body>{children}</body>
+
+            <body>
+                <PlayerProvider>
+                    { children }
+                </PlayerProvider>
+            </body>
+
             <Script src="https://sdk.scdn.co/spotify-player.js" strategy="lazyOnload" />
+
         </html>
     );
 };

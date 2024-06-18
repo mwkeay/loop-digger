@@ -1,10 +1,26 @@
 "use server";
 
 import { db, VercelPoolClient } from "@vercel/postgres";
+import { cookies } from "next/headers";
 
-export const getRawDbAccessToken = async (userId: string): Promise<string> => {
+export const getRawDbAccessToken = async (): Promise<string> => {
 
+    let userId: string;
     let client: VercelPoolClient;
+
+    // =====================
+    //     Check Cookies
+    // =====================
+
+    try {
+        const userIdCookie = cookies().get("loopdigger_user_id");
+        if (userIdCookie === undefined) throw new Error ("No loopdigger_user_id cookie found.");
+        else userId = userIdCookie.value;
+    }
+
+    catch (error) {
+        throw error;
+    }
 
     // ============================
     //     Connect To Database

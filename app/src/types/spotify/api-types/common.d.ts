@@ -1,4 +1,4 @@
-export type Image = {
+type Image = {
     /**
      * The source URL of the image.
      * @example "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228"
@@ -22,4 +22,4 @@ export type Image = {
  * console.log(track.market);
  * // >> "market=ES"
  */
-export type Market = string;
+type Market = string;

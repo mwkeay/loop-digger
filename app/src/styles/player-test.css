@@ -1,0 +1,48 @@
+.player-test {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+
+    border: white solid 1px;
+
+    && .info {
+
+        && p:first-child {
+            font-size: 1.5rem;
+            line-height: normal;
+        }
+
+        && p:nth-child(2) {
+            font-size: 1rem;
+            line-height: normal;
+            opacity: 50%;
+        }
+    }
+
+    && .buttons {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    && button {
+        height: 1.5rem;
+        padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        border: 0;
+        border-radius: 2rem;
+        white-space: nowrap;
+
+        color: black;
+        background-color: white;
+        cursor: pointer;
+
+        &&:hover {
+            opacity: 50%;
+        }
+    }
+
+    && input {
+        width: 100%;
+    }
+}

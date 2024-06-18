@@ -1,4 +1,4 @@
-export type CopyrightObject = {
+type CopyrightObject = {
     /** The copyright text for this content. */
     text: string
     /**
@@ -10,7 +10,7 @@ export type CopyrightObject = {
     type: "C" | "P"
 }
 
-export type Album = {
+type Album = {
     /** The type of the album. */
     album_type: "album" | "single" | "compilation"
     /** The number of tracks in the album. */

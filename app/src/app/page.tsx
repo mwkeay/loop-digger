@@ -1,12 +1,14 @@
-"use server";
-
 import "@/styles/home.css";
 import LoginLink from "@/components/LoginLink";
+import PlayerTest from "@/components/PlayerTest";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 const Page = () => {
 
     return (
-        <main className="home">
+        <main className={ "home " + inter.className }>
 
             <div className="home-title">
                 <h1>Loop Digger</h1>
@@ -22,6 +24,8 @@ const Page = () => {
                     Click &rarr; <LoginLink>HERE</LoginLink> &larr; to log into Spotify
                 </p>
             </div>
+
+            <PlayerTest />
 
         </main>
     );

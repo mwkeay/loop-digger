@@ -1,4 +1,4 @@
-export type SimplifiedTrack = Omit<Track, "album" | "artists" | "external_ids" | "popularity"> & {
+type SimplifiedTrack = Omit<Track, "album" | "artists" | "external_ids" | "popularity"> & {
     /** The artists who performed the track. Each artist object includes a link in `href` to more detailed information about the artist. */
     artists: SimplifiedArtist[]
     /** External URLs for this track. */
@@ -8,7 +8,7 @@ export type SimplifiedTrack = Omit<Track, "album" | "artists" | "external_ids" |
     }
 };
 
-export type Track = {
+type Track = {
     /** The album on which the track appears. The album object includes a link in `href` to full information about the album. */
     album: TrackAlbum,
     /** The artists who performed the track. Each artist object includes a link in `href` to more detailed information about the artist. */
@@ -70,21 +70,21 @@ export type Track = {
  * The {@link https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids Spotify ID} for the track.
  * @example "11dFghVXANMlKmJXsNCbNl"
  */
-export type TrackId = string;
+type TrackId = string;
 
 /**
  * A comma-separated list of the {@link https://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids Spotify IDs}. Maximum: 100 IDs.
  * @example "7ouMYWpwJ422jRcDASZB7P,4VqPOruhp5EdPBeR92t6lQ,2takcwOaAZWiXQijPHIx7B"
  */
-export type TrackIds = string;
+type TrackIds = string;
 
-export type TrackAlbum = Omit<Album, "tracks" | "copyrights" | "external_ids" | "genres" | "label" | "popularity">;
+type TrackAlbum = Omit<Album, "tracks" | "copyrights" | "external_ids" | "genres" | "label" | "popularity">;
 
 // ======================
 //     Audio Analysis
 // ======================
 
-export type AudioAnalysis = {
+type AudioAnalysis = {
     meta: object
     track: object
     /** The time intervals of the bars throughout the track. A bar (or measure) is a segment of time defined as a given number of beats. */
@@ -99,19 +99,19 @@ export type AudioAnalysis = {
     tatums: Tatum[]
 }
 
-export type Bar = {
+type Bar = {
     start: number
     duration: number
     confidence: number
 }
 
-export type Beat = {
+type Beat = {
     start: number
     duration: number
     confidence: number
 }
 
-export type Section = {
+type Section = {
     start: number
     duration: number
     confidence: number
@@ -126,7 +126,7 @@ export type Section = {
     time_signature_confidence: number
 }
 
-export type Segment = {
+type Segment = {
     start: number
     duration: number
     confidence: number
@@ -138,7 +138,7 @@ export type Segment = {
     timber: number[]
 }
 
-export type Tatum = {
+type Tatum = {
     start: number
     duration: number
     confidence: number
