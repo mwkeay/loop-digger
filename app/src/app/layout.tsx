@@ -3,6 +3,9 @@ import PlayerProvider from "@/components/PlayerProvider";
 import { Metadata } from "next/types";
 import Script from "next/script";
 import { ReactNode } from "react";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Loop Digger",
@@ -13,7 +16,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
     return (
         <html lang="en">
 
-            <body>
+            <body className={ inter.className }>
                 <PlayerProvider>
                     { children }
                 </PlayerProvider>

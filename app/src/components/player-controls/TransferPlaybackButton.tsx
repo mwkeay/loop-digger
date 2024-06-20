@@ -4,7 +4,7 @@ import transferPlaybackToDevice from "@/app/actions/transferPlaybackToDevice";
 import { usePlayer } from "@/lib/spotify/player/context";
 import { FC } from "react";
 
-const TransferPlaybackButton: FC = () => {
+const TransferPlaybackButton: FC<{ className?: string }> = ({ className }) => {
 
     const { deviceId } = usePlayer();
 
@@ -15,7 +15,7 @@ const TransferPlaybackButton: FC = () => {
     );
 
     return (
-        <button onClick={ () => transferPlaybackToDevice(deviceId) }>
+        <button onClick={ () => transferPlaybackToDevice(deviceId) } className={ className }>
             Transfer Playback
         </button>
     );

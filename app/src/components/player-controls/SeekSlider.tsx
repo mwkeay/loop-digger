@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
 
-import "./SeekSlider.css";
 import { usePlayer } from "@/lib/spotify/player/context";
 import logger from "@/lib/logger";
 import getTrack from "@/app/actions/getTrack";

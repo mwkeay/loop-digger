@@ -3,7 +3,7 @@
 import { getRawDbAccessToken } from "@/lib/spotify/auth/authorization-code-flow";
 import logger from "@/lib/logger";
 
-const apiTest = async (): Promise<Me | undefined> => {
+const getMe = async (): Promise<Me | undefined> => {
 
     let accessToken: string;
 
@@ -48,4 +48,4 @@ const apiTest = async (): Promise<Me | undefined> => {
 
 };
 
-export default apiTest;
+export default getMe;

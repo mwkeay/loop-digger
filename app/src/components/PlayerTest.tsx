@@ -14,15 +14,21 @@ const PlayerTest: FC = () => {
     return (
         <div className="player-test">
 
-            <div className="info">
-                <p>{ currentTrack?.name ?? "..." }</p>
-                <p>{ currentTrack?.artists.map(artist => artist.name).join(", ") ?? "..." }</p>
-            </div>
+            {
+                currentTrack
+
+                    ? <div className="info">
+                        <p>{ currentTrack?.name }</p>
+                        <p>{ currentTrack?.artists.map(artist => artist.name).join(", ") }</p>
+                    </div>
+
+                    : null
+            }
 
             <div className="buttons">
-                <TransferPlaybackButton />
+                <TransferPlaybackButton className="transfer-playback-btn" />
                 <PreviousTrackBtn>{ "<<" }</PreviousTrackBtn>
-                <TogglePlayBtn>{ state && !state.paused ? "||" : ">" }</TogglePlayBtn>
+                <TogglePlayBtn>{ state && !state.paused ? "| |" : ">" }</TogglePlayBtn>
                 <NextTrackBtn>{ ">>" }</NextTrackBtn>
                 <SeekSlider />
             </div>

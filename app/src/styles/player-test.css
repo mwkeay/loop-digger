@@ -7,42 +7,63 @@
     border: white solid 1px;
 
     && .info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        && p {
+            line-height: normal;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
         && p:first-child {
-            font-size: 1.5rem;
-            line-height: normal;
+            font-size: 1.25rem;
         }
 
         && p:nth-child(2) {
-            font-size: 1rem;
-            line-height: normal;
+            font-size: 0.75rem;
             opacity: 50%;
         }
     }
 
     && .buttons {
         display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 0.5rem;
-    }
 
-    && button {
-        height: 1.5rem;
-        padding: 0.25rem 0.5rem 0.25rem 0.5rem;
-        font-size: 0.75rem;
-        border: 0;
-        border-radius: 2rem;
-        white-space: nowrap;
+        && button {
+            height: 1.5rem;
+            padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            border: 0;
+            border-radius: 2rem;
+            white-space: nowrap;
+    
+            color: black;
+            background-color: white;
+            cursor: pointer;
+    
+            &&:hover {
+                opacity: 50%;
+            }
 
-        color: black;
-        background-color: white;
-        cursor: pointer;
-
-        &&:hover {
-            opacity: 50%;
+            &&:disabled {
+                opacity: 33%;
+                cursor: default;
+            }
         }
-    }
+    
+        && input {
+            flex: 1;
+            min-width: 5rem;
 
-    && input {
-        width: 100%;
+            &&:disabled {
+                opacity: 33%;
+                cursor: default;
+            }
+        }
     }
 }
