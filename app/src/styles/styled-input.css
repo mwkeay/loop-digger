@@ -19,10 +19,21 @@ div.styled-input {
         border-radius: 0.2em;
     }
 
+    & > div {
+        position: absolute;
+        width: 1em;
+        height: 1em;
+        top: 0.75em;
+        left: 0.75em;
+        pointer-events: none;
+
+        opacity: 33%;
+    }
+
     & > label {
         z-index: 1;
         position: absolute;
-        max-width: calc(100% - 0.5em);
+        max-width: calc(100% - 3em);
         top: 0em;
         left: 0.5em;
         font-size: 1em;
@@ -76,6 +87,18 @@ div.styled-input.styled-input-error {
         text-overflow: ellipsis;
 
         color: var(--error-color);
+    }
+}
+
+/* Indent input content when icon added */
+div.styled-input.styled-input-icon-indent {
+
+    & > input {
+        padding-left: 2.25em;
+    }
+
+    & > label {
+        left: 2.25em;
     }
 }
 
