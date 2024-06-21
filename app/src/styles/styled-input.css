@@ -4,7 +4,7 @@ div.styled-input {
     flex-direction: column;
     gap: 0.5em;
     
-    max-height: 2.5rem;
+    max-height: 2.5em;
     transition: max-height 0.1s ease;
 
     & > input {
