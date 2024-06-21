@@ -1,0 +1,95 @@
+div.styled-input {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    
+    max-height: 2.5rem;
+    transition: max-height 0.1s ease;
+
+    & > input {
+        line-height: 1em;
+        font-size: 1em;
+        padding: 0.75em 0.5em;
+
+        color: white;
+        background-color: transparent;
+        outline: solid 1px rgb(255, 255, 255, 0.33);
+        border: none;
+        border-radius: 0.2em;
+    }
+
+    & > label {
+        z-index: 1;
+        position: absolute;
+        max-width: calc(100% - 0.5em);
+        top: 0em;
+        left: 0.5em;
+        font-size: 1em;
+        line-height: 2.5em;
+
+        color: rgb(255, 255, 255, 0.33);
+        transition: top 0.1s, font-size 0.1s;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+div.styled-input:hover {
+
+    & > input {
+        outline-color: white;
+    }
+}
+
+div.styled-input:focus-within {
+
+    & > input {
+        outline-width: 2px;
+        outline-color: rgb(30, 215, 96);
+    }
+
+    & > label {
+        color: rgb(30, 215, 96);
+    }
+}
+
+div.styled-input.styled-input-error {
+    --error-color: rgb(237, 67, 55);
+
+    max-height: 4em;
+
+    & > input {
+        outline-color: var(--error-color);
+    }
+
+    & > label {
+        color: var(--error-color);
+    }
+
+    & > span {
+        font-size: 0.75em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        color: var(--error-color);
+    }
+}
+
+/* When focused or value not empty */
+div.styled-input:focus-within label, div.styled-input label.styled-input-label-up {
+    top: -0.5em;
+    left: 0.5em;
+    max-width: calc(100% - 1.5em);
+    font-size: 0.75em;
+    line-height: 0.75em;
+    padding: 0 0.3em;
+    background-color: black;
+}
+
+/* When hovered, not focused, not errored and up */
+div.styled-input:not(:focus-within):not(.styled-input-error):hover label.styled-input-label-up {
+    color: white;
+}
