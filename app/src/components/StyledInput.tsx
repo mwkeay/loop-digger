@@ -84,7 +84,7 @@ export const DummyStyledInput = () => {
             filter={ (value: string) => !/\d/.test(value) }
             iconPath="/images/search-icon-white.svg"
             id="dummy-styled-input"
-            label="This is a really fucking long input"
+            label="Input"
         />
     );
 };

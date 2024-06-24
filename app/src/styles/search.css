@@ -1,0 +1,98 @@
+.search {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+/* ====================== */
+/*     Search Results     */
+/* ====================== */
+
+.search > .search-results {
+    z-index: 50;
+    max-height: 30em;
+
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    &&::-webkit-scrollbar {
+        display: none; /* Chrome, Safari and Opera */
+    }
+    scroll-snap-type: y mandatory;
+
+    outline: 1px rgb(255, 255, 255, 0.33) solid;
+    border-radius: 0.25em;
+    
+    && > .spotify-item {
+        scroll-snap-align: start;
+
+        height: 3em;
+        padding: 0.75em 1em;
+        flex-shrink: 0;
+        flex-grow: 0;
+
+        display: flex;
+        align-items: center;
+        gap: 1em;
+
+        background-color: black;
+        border-radius: 0.25em;
+
+        &&:hover {
+            background-color: rgb(30, 30, 30);
+        }
+
+        && .name, .artists, .length {
+            color: white;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            pointer-events: none;
+        }
+
+        && > .img-container {
+            width: 3em;
+            height: 3em;
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+
+            && > img {
+                height: 100%;
+                pointer-events: none;
+            }
+        }
+
+        && > .details {
+            flex-grow: 1;
+
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            gap: 0.25em;
+
+            && > .name {
+                font-size: 1em;
+            }
+
+            && > .artists {
+                font-size: 0.9em;
+                opacity: 50%;
+            }
+        }
+
+        && > .length {
+            height: min-content;
+            width: 3.5em;
+            font-size: 0.75em;
+            flex-shrink: 0;
+
+            text-align: center;
+        }
+    }
+}

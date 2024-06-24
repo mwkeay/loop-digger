@@ -4,6 +4,7 @@ import { Metadata } from "next/types";
 import Script from "next/script";
 import { ReactNode } from "react";
 import { Inter } from "next/font/google";
+import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ const RootLayout = ({ children }: { children: ReactNode }) => {
 
             <body className={ inter.className }>
                 <PlayerProvider>
+                    { <Header /> }
                     { children }
                 </PlayerProvider>
             </body>
