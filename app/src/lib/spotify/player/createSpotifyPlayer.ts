@@ -3,12 +3,12 @@
 import logger from "@/lib/logger";
 import { SpotifyPlayer } from "@/types/spotify/SpotifyPlayer";
 
-const createSpotifyPlayer = (tokenCallback: () => Promise<string>, initVolume: number = 0.5): SpotifyPlayer | undefined => {
+const createSpotifyPlayer = (tokenCallback: () => Promise<string | null>, initVolume: number = 0.5): SpotifyPlayer | undefined => {
 
     try {
         const options: PlayerInit = {
             name: "LoopDigger Spotify Web Player",
-            getOAuthToken: cb => tokenCallback().then(accessToken => cb(accessToken)),
+            getOAuthToken: cb => tokenCallback().then(accessToken => accessToken && cb(accessToken)),
             volume: initVolume,
         };
 

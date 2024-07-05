@@ -51,7 +51,7 @@ const StyledInput: FC<StyledInputProps> = ({ callback, errorMessage, filter, ico
                 iconPath && <div>
                     <Image
                         src={ iconPath }
-                        layout="fill"
+                        fill={true}
                         alt={ iconPath }
                     />
                 </div>

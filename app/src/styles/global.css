@@ -18,8 +18,9 @@ body {
     overscroll-behavior: none;
 }
 
-main {
-    padding: 0 1rem 1rem 1rem;
+img {
+    user-select: none;
+    pointer-events: none;
 }
 
 p {
@@ -63,4 +64,23 @@ html::-webkit-scrollbar {
 html {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+}
+
+/* ===================== */
+/*     Miscellaneous     */
+/* ===================== */
+
+.img-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    && > img {
+        height: 100%;
+    }
+}
+
+.hidden {
+    display: none;
 }

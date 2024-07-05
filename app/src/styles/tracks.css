@@ -8,13 +8,14 @@ main.track-page {
 }
 
 .track-item {
-    width: 100%;
+    flex: 1;
+    min-height: 3em;
 
     display: flex;
     align-items: center;
     overflow: hidden;
     gap: 1em;
-    padding: 0.25em 0;
+    padding: 0.25em 0.5em;
 
     border-radius: 0.25em;
 

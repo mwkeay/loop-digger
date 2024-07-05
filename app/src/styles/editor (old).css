@@ -1,0 +1,165 @@
+main#editor-page {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+
+    & > div {
+        display: flex;
+        gap: 1em;
+        padding: 1em 2em;
+
+        && > div > label {
+            font-size: 0.75em;
+            line-height: 2em;
+            font-weight: 500;
+            color: rgb(255, 255, 255, 0.5);
+        }
+    }
+}
+
+/* ========================== */
+/*     Editor Sample Edit     */
+/* ========================== */
+
+#editor-sample-edit {
+    width: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    padding: 0.75em 0.5em;
+    gap: 0.5em;
+
+    color: white;
+    border: 1px solid rgb(255, 255, 255, 0.33);
+
+    & > .timings {
+        display: flex;
+        gap: 0.5em;
+    }
+}
+
+/* ========================== */
+/*     Editor Sample List     */
+/* ========================== */
+
+#editor-sample-list > .samples > .editor-sample-list-item {
+    width: 20em;
+
+    display: flex;
+    align-items: center;
+    padding: 0.5em;
+    gap: 1em;
+
+    outline: 1px solid rgb(255, 255, 255, 0.33);
+
+    &&:hover {
+        background-color: rgb(255, 255, 255, 0.15);
+    }
+
+    &&.selected {
+        color: rgb(30, 215, 96);
+        outline: 2px solid rgb(30, 215, 96);
+    }
+
+    && > .img-container {
+        border: 1px solid rgb(255, 255, 255, 0.33);
+        width: 2em;
+        height: 2em;
+    }
+
+    && > .timing {
+        display: flex;
+        align-items: center;
+        gap: 0.5em;
+
+        font-size: 1em;
+        font-weight: 500;
+
+        && > .arrow {
+            line-height: 0.9em;
+            padding-bottom: 0.1em;
+        }
+    }
+}
+
+#editor-sample-list {
+    width: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em;
+    gap: 0.5em;
+
+    color: white;
+    border: 1px solid rgb(255, 255, 255, 0.33);
+
+    & > .samples {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+    }
+
+    & > button {
+        width: 100%;
+        border: none;
+        color: white;
+        outline: 1px solid rgb(255, 255, 255, 0.5);
+        background-color: transparent;
+    }
+}
+
+/* ========================= */
+/*     Editor Track Head     */
+/* ========================= */
+
+main#editor-page > #editor-track-head {
+    display: flex;
+    padding: 1em 2em;
+    gap: 1em;
+    pointer-events: none;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.33);
+
+    && > .img-container {
+        width: 5em;
+        height: 5em;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        && > img {
+            height: 100%;
+        }
+    }
+
+    && > div {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.5em;
+
+        && > .name, .artists {
+            color: white;
+            font-weight: 500;
+        }
+
+        && > .name {
+            font-size: 1.5em;
+        }
+
+        && > .artists {
+            color: rgb(255, 255, 255, 0.5);
+        }
+    }
+}
+
+/* ===================== */
+/*     Miscellaneous     */
+/* ===================== */
+
+main#editor-page .disabled {
+    pointer-events: none;
+    user-select: none;
+    opacity: 33%;
+}

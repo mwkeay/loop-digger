@@ -1,8 +1,8 @@
 "use client";
 
 import "@/styles/tracks.css";
-import ArtistNames from "@/lib/spotify/ArtistNames";
-import { FC, useState } from "react";
+import ArtistNames from "@/components/ArtistNames";
+import { FC, MouseEventHandler, useState } from "react";
 
 function formatTime(milliseconds: number) {
 
@@ -15,22 +15,21 @@ function formatTime(milliseconds: number) {
     return `${paddedMinutes}:${paddedSeconds}`;
 }
 
-
 interface TrackItemProps {
     id?: string
     linked?: boolean
+    onClick?: MouseEventHandler<HTMLDivElement>
     track: Track | undefined
 }
 
-export const TrackItem: FC<TrackItemProps> = ({ id, linked = true, track }) => {
-
+export const TrackItem: FC<TrackItemProps> = ({ id, linked = true, onClick, track }) => {
     return (
-        <div id={ id } className={ "track-item" + (track ? "" : " undefined") }>
+        <div id={id} className={ "track-item" + (track ? "" : " undefined") } onClick={onClick}>
 
             <div className="img-container">
                 { track && <img
-                    src={ track.album.images[2].url }
-                    alt={ track.name }
+                    src={track.album.images[2].url}
+                    alt={track.name}
                 /> }
             </div>
 

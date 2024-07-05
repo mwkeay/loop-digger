@@ -16,7 +16,7 @@ const getMe = async (): Promise<Me | undefined> => {
     }
 
     catch (error) {
-        logger.error("apiTest failed to retrieve access token.", error);
+        //logger.error("getMe failed to retrieve access token.", error);
         return;
     }
 

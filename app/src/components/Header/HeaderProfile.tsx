@@ -1,34 +1,31 @@
-"use client";
-
-import getMe from "@/app/actions/apiTest";
-import { FC, useEffect, useState } from "react";
+import getMe from "@/app/actions/getMe";
+import { FC } from "react";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import login from "@/app/actions/login";
+import Link from "next/link";
+import config from "@/lib/config";
 
 const inter = Inter({ subsets: ["latin"], weight: ["500"] });
 
 const SpotifyIconImg = () => <div className="image-container">
     <Image
         src="/images/spotify-branding/Spotify_Icon_RGB_White.png"
-        layout="fill"
+        fill={ true }
         alt="Spotify Icon White"
     />
 </div>;
 
-const HeaderProfile: FC = () => {
+const HeaderProfile: FC = async () => {
 
-    const [me, setMe] = useState<Me>();
-
-    useEffect(() => {
-        getMe().then(me => setMe(me));
-    }, [])
+    const me = await getMe()
 
     if (!me) return (
-        <button onClick={ () => login() }>
-            <SpotifyIconImg />
-            <p className={ inter.className }>Login with Spotify</p>
-        </button>
+        <Link href={config.rootUrl + "/api/spotify/auth/login"}>
+            <button type="button">
+                <SpotifyIconImg />
+                <p className={ inter.className }>Login with Spotify</p>
+            </button>
+        </Link>
     );
 
     return (

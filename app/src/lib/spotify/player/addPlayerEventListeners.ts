@@ -3,7 +3,10 @@ import { PlayerContextObject, nullPlayerContext } from "./context";
 import logger from "@/lib/logger";
 import { SpotifyPlayer } from "@/types/spotify/SpotifyPlayer";
 
-const addPlayerEventListeners = (player: SpotifyPlayer, setContext: Dispatch<SetStateAction<PlayerContextObject>>) => {
+const addPlayerEventListeners = (
+    player: SpotifyPlayer,
+    setContext: Dispatch<SetStateAction<PlayerContextObject>>,
+) => {
 
     // =====================
     //     Account Error

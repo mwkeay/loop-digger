@@ -11,6 +11,21 @@ const PlayerProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
     const [context, setContext] = useState<PlayerContextObject>(initPlayerContext);
 
+    // ===============
+    //     Timeout
+    // ===============
+
+    const setPlayerTimeout = useCallback((callback: () => void, ms: number) => setContext(prev => {
+        if (prev.timeout) clearTimeout(prev.timeout);
+        const timeout = setTimeout(callback, ms);
+        return { ...prev, timeout };
+    }), [setContext]);
+
+    const clearPlayerTimeout = useCallback(() => setContext(prev => {
+        if (prev.timeout) clearTimeout(prev.timeout);
+        return { ...prev, timeout: null };
+    }), [setContext]);
+
     // ======================
     //     Volume Control
     // ======================
@@ -42,9 +57,14 @@ const PlayerProvider: FC<{ children: ReactNode }> = ({ children }) => {
     useEffect(() => {
 
         const tokenCallback = async () => {
-            const accessToken = await getRawDbAccessToken();
-            logger.info("SpotifyPlayer authentication refreshed.");
-            return accessToken;
+            try {
+                const accessToken = await getRawDbAccessToken();
+                logger.info("SpotifyPlayer authentication refreshed.");
+                return accessToken;
+            }
+            catch (error) {
+                return null;
+            }
         };
 
         window.onSpotifyWebPlaybackSDKReady = () => {
@@ -71,9 +91,15 @@ const PlayerProvider: FC<{ children: ReactNode }> = ({ children }) => {
     //     Render Provider
     // =======================
 
+    const passedContext = {
+        ...context,
+        setPlayerTimeout,
+        clearPlayerTimeout,
+    }
+
     return (
-        <PlayerContext.Provider value={ context }>
-            { children }
+        <PlayerContext.Provider value={passedContext}>
+            {children}
         </PlayerContext.Provider>
     );
 };
