@@ -37,11 +37,12 @@ const SearchResults: FC<SearchResultsProps> = ({ trackCallback, results, linked 
 // ==================
 
 interface SearchProps {
-    trackCallback: (track: Track) => void,
-    linked?: boolean,
+    trackCallback: (track: Track) => void
+    linked?: boolean
+    disabled?: boolean
 }
 
-const TrackSearch: FC<SearchProps> = ({ trackCallback, linked }) => {
+const TrackSearch: FC<SearchProps> = ({ trackCallback, linked, disabled }) => {
 
     // Determine the value of linked based on trackCallback if not explicitly set
     const effectiveLinked = linked !== undefined ? linked : !trackCallback;
@@ -66,6 +67,7 @@ const TrackSearch: FC<SearchProps> = ({ trackCallback, linked }) => {
                 callback={ (query: string) => debouncedRefreshSearch(query) }
                 iconPath="/images/search-icon-white.svg"
                 label="Pick a track"
+                disabled={disabled}
             />
             {
                 searchResults

@@ -9,6 +9,7 @@ import { FC } from "react";
 const SamplesView: FC = () => {
 
     const { createNewSample, samples, sampleEdit } = useEditor();
+    const { isActive, playSample } = usePlayer();
 
     if (samples.length == 0) return (
         <div id="editor-samples-view">
@@ -25,6 +26,13 @@ const SamplesView: FC = () => {
                 <span className="start">{sample.startMs != undefined ? sample.startMs : "?"}</span>
                 &rArr;
                 <span className="duration">{(sample.startMs != undefined) ? sample.startMs + (sample.durationMs ?? 0) : "?"}</span>
+                
+                <button
+                    onClick={ () => playSample(sample) }
+                    disabled={!sample.track || !sample.startMs || !sample.durationMs || !isActive}
+                >
+                    Play
+                </button>
             </div>
         );
     });

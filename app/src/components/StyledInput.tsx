@@ -6,6 +6,7 @@ import Image from "next/image";
 
 interface StyledInputProps {
     callback: (value: string) => void
+    disabled?: boolean
     errorMessage?: string
     filter?: (value: string) => boolean
     iconPath?: string
@@ -14,7 +15,7 @@ interface StyledInputProps {
     spellCheck?: boolean
 }
 
-const StyledInput: FC<StyledInputProps> = ({ callback, errorMessage, filter, iconPath, id, label, spellCheck = false }) => {
+const StyledInput: FC<StyledInputProps> = ({ callback, disabled, errorMessage, filter, iconPath, id, label, spellCheck = false }) => {
 
     const [value, setValue] = useState("");
 
@@ -40,33 +41,35 @@ const StyledInput: FC<StyledInputProps> = ({ callback, errorMessage, filter, ico
             "styled-input"
             + (errorMessage ? " styled-input-error" : "")
             + (iconPath ? " styled-input-icon-indent" : "")
+            + (disabled ? " disabled" : "")
         }>
 
             {
                 label
-                    && <label ref={ labelRef } htmlFor={ id }>{ label }</label>
+                    && <label ref={labelRef} htmlFor={id}>{label}</label>
             }
 
             {
                 iconPath && <div>
                     <Image
-                        src={ iconPath }
+                        src={iconPath}
                         fill={true}
-                        alt={ iconPath }
+                        alt={iconPath}
                     />
                 </div>
             }
 
             <input
-                id={ id }
-                value={ value }
-                onChange={ handleChange }
-                spellCheck={ spellCheck }
+                id={id}
+                value={value}
+                onChange={handleChange}
+                spellCheck={spellCheck}
+                disabled={disabled}
             />
 
             {
                 errorMessage
-                    && <span>{ errorMessage }</span>
+                    && <span>{errorMessage}</span>
             }
 
         </div>
@@ -79,9 +82,10 @@ export const DummyStyledInput = () => {
 
     return (
         <StyledInput
-            callback={ (value: string) => value.includes("ERROR") ? setIsError(true) : setIsError(false) }
-            errorMessage={ isError ? "Error: This didn't work." : undefined }
-            filter={ (value: string) => !/\d/.test(value) }
+            callback={(value: string) => value.includes("ERROR") ? setIsError(true) : setIsError(false)}
+            disabled={false}
+            errorMessage={isError ? "Error: This didn't work." : undefined}
+            filter={(value: string) => !/\d/.test(value)}
             iconPath="/images/search-icon-white.svg"
             id="dummy-styled-input"
             label="Input"

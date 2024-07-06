@@ -6,10 +6,12 @@ import ArtistNames from "../ArtistNames";
 import TrackSearch from "../TrackSearch";
 import logger from "@/lib/logger";
 import PlayFill from "../player/player-controls/PlayFill";
+import { usePlayer } from "@/lib/spotify/player/context";
 
 const SampleEdit: FC = () => {
 
     const { samples, sampleEdit } = useEditor();
+    const { positionMs } = usePlayer();
 
     const [startMs, setStartMs] = useState<number | undefined>();
     const [durationMs, setDurationMs] = useState<number | undefined>();
@@ -54,19 +56,32 @@ const SampleEdit: FC = () => {
         setEndMs((sample?.startMs && sample?.durationMs) ? sample?.startMs + sample?.durationMs : undefined);
     }, [sample, sampleEdit.currentIndex, setStartMs])
 
-    useEffect(() => console.log(startMs), [startMs]);
-
     // =================
     //     Rendering
     // =================
 
-    // On first render
+    // No active sample
     if (!sample) return (
         <div id="editor-sample-edit">
-            Create a sample to edit
+            <TrackSearch disabled trackCallback={() => {}} />
+            <div className={"times disabled"}>
+                <div>
+                    <span>{"Start time (ms)"}</span>
+                    <input disabled={true} placeholder="0" />
+                </div>
+                <div>
+                    <span>{"Duration (ms)"}</span>
+                    <input disabled={true} placeholder="0" />
+                </div>
+                <div>
+                    <span>{"End time (ms)"}</span>
+                    <input disabled={true} placeholder="0" />
+                </div>
+            </div>
         </div>
     );
 
+    // Active sample
     return (
         <div id="editor-sample-edit">
             
@@ -118,7 +133,6 @@ const SampleEdit: FC = () => {
                     />
                 </div>
             </div>
-
         </div>
     );
 };

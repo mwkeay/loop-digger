@@ -11,13 +11,13 @@ const PlayFill: FC<{ track: Track }> = ({ track }) => {
 
     if (!isActive) return;
 
-    if (currentTrack?.id === track.id && !state?.paused) return (
+    if (currentTrack?.id === track.id && state?.paused === false) return (
         <div onClick={() => player?.pause()} className="player-playfill">
             Pause
         </div>
     )
 
-    if (currentTrack?.id === track.id && state?.paused) return (
+    if (currentTrack?.id === track.id && state?.paused === true) return (
         <div onClick={() => player?.resume()} className="player-playfill">
             Play
         </div>

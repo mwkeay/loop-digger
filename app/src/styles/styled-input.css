@@ -51,14 +51,14 @@ div.styled-input {
     }
 }
 
-div.styled-input:hover {
+div.styled-input:hover:not(.disabled) {
 
     & > input {
         outline-color: white;
     }
 }
 
-div.styled-input:focus-within {
+div.styled-input:focus-within:not(.disabled) {
 
     & > input {
         outline-width: 2px;

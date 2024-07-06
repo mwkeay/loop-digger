@@ -1,5 +1,3 @@
-import "@/styles/home.css";
-
 const Page = () => {
 
     return (

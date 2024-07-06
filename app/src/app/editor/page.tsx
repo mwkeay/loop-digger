@@ -8,6 +8,7 @@ import PickTrackPopup from "@/components/editor/PickTrackPopup";
 import SamplesView from "@/components/editor/SamplesView";
 import SampleEdit from "@/components/editor/SampleEdit";
 import TransferPlaybackButton from "@/components/player/player-controls/TransferPlaybackButton";
+import PlayerTest from "@/components/player/PlayerTest";
 
 /**
  * NextJS app router page with search parameters.
@@ -36,12 +37,12 @@ const Page: EditorPage = ({ searchParams }) => {
 
     return (
         <EditorProvider initContext={initContext} userId={userId}>
-            <TransferPlaybackButton />
             <main id="editor-page">
                 <PickTrackPopup />
                 <SamplesView />
                 <SampleEdit />
             </main>
+            <PlayerTest />
         </EditorProvider>
     );
 };
