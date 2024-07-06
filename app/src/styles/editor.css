@@ -1,8 +1,8 @@
 main#editor-page {
     position: relative;
-    height: 100%;
 
     display: flex;
+    flex-wrap: wrap;
 
     color: white;
 }
@@ -33,7 +33,8 @@ main#editor-page {
 }
 
 #editor-samples-view {
-    flex: 1 1 0;
+    height: min-content;
+    flex: 1;
 
     display: flex;
     flex-direction: column;
@@ -75,15 +76,38 @@ main#editor-page {
 
     & > div.track {
         display: flex;
+        gap: 0.5em;
 
-        && > div {
+        && > .img-container {
+            flex-shrink: 0;
+            padding-top: calc(33% - 0.25em);
+            max-width: calc(33% - 0.25em);
+            width: calc(33% - 0.25em);
+
+            && > img {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+
+        && > .details {
             display: flex;
             flex-direction: column;
+
+            && > .name {
+                font-size: 1.25em;
+            }
+
+            && > .artists {
+                font-size: 1em;
+            }
         }
     }
 
     & > div.times {
         display: flex;
+        flex-wrap: wrap;
         gap: 1em;
 
         &&.disabled > div {
@@ -99,6 +123,7 @@ main#editor-page {
         }
         
         && > div {
+            min-width: 5em;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -107,6 +132,9 @@ main#editor-page {
             && > span {
                 font-size: 0.75em;
                 font-weight: 500;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
             }
 
             &&:focus-within > span {

@@ -92,9 +92,9 @@ const SampleEdit: FC = () => {
                         <PlayFill track={sample.track} />
                         <img src={sample.track.album.images[1].url} />
                     </div>
-                    <div>
-                        <span>{sample.track.name}</span>
-                        <span><ArtistNames artists={sample.track.artists} /></span>
+                    <div className="details">
+                        <span className="name">{sample.track.name}</span>
+                        <span className="artists"><ArtistNames artists={sample.track.artists} /></span>
                     </div>
                 </div>
 

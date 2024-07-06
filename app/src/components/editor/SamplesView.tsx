@@ -1,10 +1,21 @@
 "use client";
 
-import startPlayback from "@/app/actions/startPlayback";
-import { EditorContextSample, useEditor } from "@/lib/editor/context";
-import logger from "@/lib/logger";
+import { useEditor } from "@/lib/editor/context";
 import { usePlayer } from "@/lib/spotify/player/context";
 import { FC } from "react";
+
+const formatMilliseconds = (ms: number) => {
+    const minutes = Math.floor(ms / 60000);
+    const seconds = Math.floor((ms % 60000) / 1000);
+    const milliseconds = ms % 1000;
+
+    // Pad the minutes and seconds with leading zeros if necessary
+    const formattedMinutes = minutes.toString().padStart(1, '0');
+    const formattedSeconds = seconds.toString().padStart(2, '0');
+    const formattedMilliseconds = milliseconds.toString().padStart(3, '0');
+
+    return `${formattedMinutes}:${formattedSeconds}.${formattedMilliseconds}`;
+};
 
 const SamplesView: FC = () => {
 
@@ -23,9 +34,9 @@ const SamplesView: FC = () => {
                 <div className="img-container">
                     {sample.track && <img src={sample.track.album.images[1].url} />}
                 </div>
-                <span className="start">{sample.startMs != undefined ? sample.startMs : "?"}</span>
+                <span className="start">{sample.startMs != undefined ? formatMilliseconds(sample.startMs) : "?"}</span>
                 &rArr;
-                <span className="duration">{(sample.startMs != undefined) ? sample.startMs + (sample.durationMs ?? 0) : "?"}</span>
+                <span className="duration">{(sample.startMs != undefined) ? formatMilliseconds(sample.startMs + (sample.durationMs ?? 0)) : "?"}</span>
                 
                 <button
                     onClick={ () => playSample(sample) }
