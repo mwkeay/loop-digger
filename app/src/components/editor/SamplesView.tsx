@@ -4,6 +4,8 @@ import { useEditor } from "@/lib/editor/context";
 import { usePlayer } from "@/lib/spotify/player/context";
 import { FC } from "react";
 
+import "@/styles/editor/samples-view.css";
+
 const formatMilliseconds = (ms: number) => {
     const minutes = Math.floor(ms / 60000);
     const seconds = Math.floor((ms % 60000) / 1000);

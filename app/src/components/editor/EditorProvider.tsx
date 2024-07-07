@@ -2,7 +2,6 @@
 
 import { EditorContext, EditorContextSample, createBlankEditorContext } from "@/lib/editor/context";
 import logger from "@/lib/logger";
-import { usePlayer } from "@/lib/spotify/player/context";
 import { FC, ReactNode, useCallback, useState } from "react";
 
 type EditorProviderProps = {

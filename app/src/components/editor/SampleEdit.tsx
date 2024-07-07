@@ -8,10 +8,11 @@ import logger from "@/lib/logger";
 import PlayFill from "../player/player-controls/PlayFill";
 import { usePlayer } from "@/lib/spotify/player/context";
 
+import "@/styles/editor/sample-edit.css";
+
 const SampleEdit: FC = () => {
 
     const { samples, sampleEdit } = useEditor();
-    const { positionMs } = usePlayer();
 
     const [startMs, setStartMs] = useState<number | undefined>();
     const [durationMs, setDurationMs] = useState<number | undefined>();

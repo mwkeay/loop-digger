@@ -22,6 +22,7 @@ const PlayerProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const [positionMs, setPositionMs] = useState<number | null>(initPlayerContext.positionMs);
     const [state, setState] = useState<WebPlaybackState | null>(initPlayerContext.state); // state refers to Spotify.Player.state
 
+    // Timed action
     const [timedAction, setTimedAction] = useState<TimedAction | null>(null)
 
     // ===============
@@ -55,7 +56,7 @@ const PlayerProvider: FC<{ children: ReactNode }> = ({ children }) => {
                 }
             }
             // Delay
-            await new Promise(resolve => setTimeout(resolve, 10));
+            //await new Promise(resolve => setTimeout(resolve, 10));
             // Continue recursion
             frameId = requestAnimationFrame(checkPosition);
         }
@@ -231,13 +232,21 @@ const PlayerProvider: FC<{ children: ReactNode }> = ({ children }) => {
     // ==============
 
     const passedContext: PlayerContextObject = {
+
+        // Core
         ...context,
+
+        // Core (self managed)
         positionMs,
         state,
         setVolume,
+
+        // Functions
+        playSample,
+
+        // Timed action
         timedAction,
         setTimedAction,
-        playSample,
     }
 
     return (

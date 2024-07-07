@@ -1,0 +1,31 @@
+.visualizer {
+    display: flex;
+    gap: 1em;
+
+    && > .img-container {
+        height: 4em;
+        width: 4em;
+        background-color: rgb(255, 255, 255, 0.1);
+    }
+
+    && > .timeline-container {
+        position: relative;
+        flex: 1;
+
+        && > .timeline, .position-pointer {
+            position: absolute;
+            top: calc(50% - 0.2em);
+            height: 0.2em;
+            border-radius: 0.1em;
+        }
+
+        && > .timeline {
+            width: calc(100% - 2em);
+            background-color: rgb(255, 255, 255, 0.5);
+        }
+
+        && > .position-pointer {
+            background-color: white;
+        }
+    }
+}

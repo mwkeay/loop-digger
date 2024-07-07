@@ -1,4 +1,3 @@
-import "@/styles/editor.css";
 import EditorProvider from "@/components/editor/EditorProvider";
 import { EditorContext } from "@/lib/editor/context";
 import { cookies } from "next/headers";
@@ -7,8 +6,10 @@ import login from "../actions/login";
 import PickTrackPopup from "@/components/editor/PickTrackPopup";
 import SamplesView from "@/components/editor/SamplesView";
 import SampleEdit from "@/components/editor/SampleEdit";
-import TransferPlaybackButton from "@/components/player/player-controls/TransferPlaybackButton";
 import PlayerTest from "@/components/player/PlayerTest";
+import EditorVisualizer from "@/components/editor/EditorVisualizers";
+
+import "@/styles/editor/page.css";
 
 /**
  * NextJS app router page with search parameters.
@@ -39,8 +40,11 @@ const Page: EditorPage = ({ searchParams }) => {
         <EditorProvider initContext={initContext} userId={userId}>
             <main id="editor-page">
                 <PickTrackPopup />
-                <SamplesView />
-                <SampleEdit />
+                <EditorVisualizer />
+                <div id="editor-page-samples">
+                    <SamplesView />
+                    <SampleEdit />
+                </div>
             </main>
             <PlayerTest />
         </EditorProvider>

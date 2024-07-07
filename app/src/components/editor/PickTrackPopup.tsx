@@ -7,6 +7,7 @@ import { useEditor } from "@/lib/editor/context";
 import { useSearchParams } from "next/navigation";
 import getTrack from "@/app/actions/getTrack";
 
+import "@/styles/editor/start-popup.css";
 
 const PickTrackPopup: FC = () => {
 
@@ -20,8 +21,8 @@ const PickTrackPopup: FC = () => {
     }, []);
 
     return (
-        <div id="editor-new-breakdown-popup-container" className={ track ? "hidden" : undefined }>
-            <div id="editor-new-breakdown-popup">
+        <div id="editor-start-popup-container" className={ track ? "hidden" : undefined }>
+            <div id="editor-start-popup">
                 <TrackSearch trackCallback={ setTrack } />
             </div>
         </div>

@@ -1,0 +1,11 @@
+main#editor-page {
+    display: flex;
+    flex-direction: column;
+
+    color: white;
+
+    & > #editor-page-samples {
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
