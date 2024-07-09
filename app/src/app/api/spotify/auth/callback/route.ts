@@ -1,7 +1,5 @@
 import config from "@/lib/config";
 import spotifyConfig from "@/lib/spotify/config";
-import { SpotifyOAuthResponse } from "@/types/spotify/auth";
-import { Me } from "@/types/spotify/api-types/users";
 import { db, VercelPoolClient } from "@vercel/postgres";
 import { cookies } from "next/headers";
 
@@ -9,8 +7,6 @@ export const GET = async (request: Request) => {
 
     const { searchParams } = new URL(request.url);
     const authCode = searchParams.get("code");
-
-    cookies().set("test", "WAHDUFDIF");
 
     if (!authCode) {
         console.error("No authorization code found in callback search params.");

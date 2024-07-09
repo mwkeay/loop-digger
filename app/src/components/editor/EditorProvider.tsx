@@ -1,6 +1,7 @@
 "use client";
 
-import { EditorContext, EditorContextSample, createBlankEditorContext } from "@/lib/editor/context";
+import saveBreakdown from "@/app/actions/saveBreakdown";
+import { EditorContext, EditorContextMeta, EditorContextSample, createBlankEditorContext } from "@/lib/editor/context";
 import logger from "@/lib/logger";
 import { FC, ReactNode, useCallback, useState } from "react";
 
@@ -18,6 +19,17 @@ const EditorProvider: FC<EditorProviderProps> = ({ children, initContext, userId
     // =========================
     //     Context Functions
     // =========================
+
+    const loadFromDb = (breakdown: {
+        meta: EditorContextMeta
+        track: Track
+        samples: EditorContextSample[]
+    }) => setContext(prev => ({
+        ...prev,
+        meta: breakdown.meta,
+        track: breakdown.track,
+        samples: breakdown.samples,
+    }));
 
     const createNewSample = useCallback(() => setContext(prev => {
         const blankSample: EditorContextSample = { track: undefined, startMs: undefined, durationMs: undefined }
@@ -68,6 +80,16 @@ const EditorProvider: FC<EditorProviderProps> = ({ children, initContext, userId
     //     Output
     // ==============
 
+    const save = async () => {
+        try {
+            const databaseId = await saveBreakdown(context.meta, context.track?.id, context.samples);
+            if (databaseId) setContext(prev => ({ ...prev, meta: { ...prev.meta, databaseId }}));
+        }
+        catch (error) {
+            logger.error("Failed to save.", error);
+        }
+    };
+
     const passedContext: EditorContext = {
         ...context,
         createNewSample,
@@ -77,7 +99,9 @@ const EditorProvider: FC<EditorProviderProps> = ({ children, initContext, userId
             ...context.sampleEdit,
             setCurrentIndex,
             setSample,
-        }
+        },
+        save,
+        loadFromDb,
     };
 
     return (

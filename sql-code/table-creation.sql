@@ -13,29 +13,19 @@ CREATE TABLE user_authorization (
 
 CREATE TABLE breakdown (
     id SERIAL PRIMARY KEY,
+    track_id VARCHAR(255) NOT NULL,
     author BIGINT NOT NULL,
-    breakdown_track_id VARCHAR(255) NOT NULL,
+    created DATE NOT NULL,
+    public BOOLEAN NOT NULL,
     FOREIGN KEY (author) REFERENCES user_account(id)
 );
 
 CREATE TABLE breakdown_sample (
-    id SERIAL PRIMARY KEY,
     breakdown_id BIGINT NOT NULL,
-    track_id VARCHAR(255) NOT NULL,
-    start_ms INT NOT NULL,
-    duration_ms SMALLINT NOT NULL,
-    interpolated BOOLEAN NOT NULL,
-    FOREIGN KEY (breakdown_id) REFERENCES breakdown(id)
-);
-
-CREATE TABLE breakdown_sequenece_step (
-    id SERIAL PRIMARY KEY,
-    breakdown_id BIGINT NOT NULL,
-    sample_id BIGINT NOT NULL,
-    start_ms INT NOT NULL,
-    new_duration_ms SMALLINT,
-    loops SMALLINT,
-    reversed BOOLEAN NOT NULL,
+    sample_no SMALLINT NOT NULL,
+    track_id VARCHAR(255),
+    start_ms INT,
+    duration_ms INT,
     FOREIGN KEY (breakdown_id) REFERENCES breakdown(id),
-    FOREIGN KEY (sample_id) REFERENCES breakdown_sample(id)
+    PRIMARY KEY (breakdown_id, sample_no)
 );
